@@ -10,6 +10,7 @@ env:
   TEMPLATE-FILE: infra/webapp.bicep
   SUBSCRIPTION-ID: 934d4e08-961c-483d-888e-b3a30d6d4879
   WEBAPP-NAME: eshoponweb-webapp-NAME
+  DOTNET-VERSION: 8.0.x
 
 jobs:
   #Build, test and publish .net web project in repository
@@ -22,7 +23,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: "8.0.x"
+          dotnet-version: ${{env.DOTNET-VERSION}}
           dotnet-quality: "preview"
       #Build/Test/Publish the .net project
       - name: Build with dotnet
